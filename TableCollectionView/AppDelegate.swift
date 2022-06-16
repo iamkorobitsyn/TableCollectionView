@@ -11,25 +11,17 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-var window: UIWindow?
+    var window: UIWindow?
     
-    var nav = UINavigationController()
+    let viewController = MainViewController()
     
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let viewControler = ViewController()
+        let navigation: NavigationController = .init(rootViewController: viewController)
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
-        nav = UINavigationController(rootViewController: viewControler)
-        
-        window?.rootViewController = nav
-        
+        window?.rootViewController = navigation
         window?.makeKeyAndVisible()
-        
-        window?.backgroundColor = UIColor.red
-        
         
         return true
     }
