@@ -22,6 +22,7 @@ class MembersCell: UITableViewCell {
         
         image.heightAnchor.constraint(equalToConstant: 50).isActive = true
         image.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        image.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         
         
         image.image = UIImage(named: "1967 - The Piper At The Gates Of Dawn")

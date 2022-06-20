@@ -9,23 +9,20 @@ import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let headerV = UIImageView()
-    var headerView = MainHeaderView()
+    var mainHeader = MainHeader()
     var tableview = UITableView()
    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Hello"
+        title = "Pink Floyd"
         
         createTableView()
-
-        setupHeaderView()
-        
+        tableview.tableHeaderView = mainHeader.headerFrame
     }
     
+    //MARK: - Create TableView
  
-
     func createTableView() {
         
         tableview = UITableView(frame: view.bounds, style: .plain)
@@ -35,40 +32,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         view.addSubview(tableview)
         
-        tableview.translatesAutoresizingMaskIntoConstraints = false
-        tableview.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableview.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableview.sectionHeaderTopPadding = 0
+        tableview.separatorStyle = .none
+    }
 
-        
-    }
-    
-    func setupHeaderView() {
-        let headerFrame = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
-       
-        let view = headerV
-        headerFrame.insertSubview(view, at: 1)
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.centerXAnchor.constraint(equalTo: headerFrame.centerXAnchor).isActive = true
-        view.centerYAnchor.constraint(equalTo: headerFrame.centerYAnchor).isActive = true
-        
-        headerV.translatesAutoresizingMaskIntoConstraints = false
-        headerV.widthAnchor.constraint(equalTo: headerFrame.widthAnchor).isActive = true
-        headerV.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        headerV.image = UIImage(named: "startImage")
-        headerV.contentMode = .scaleAspectFill
-        headerV.clipsToBounds = true
-        
-        tableview.tableHeaderView = headerFrame
-        
-    }
-    
-    
-    
-    
+
     //MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,9 +47,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 3
+            return 1
         case 1:
-            return 2
+            return 1
         case 2:
             return 1
         default:
@@ -89,31 +58,55 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 0
     }
     
+ 
+
+    //MARK: - UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell", for: indexPath) as? MembersCell {
-        return cell
-    }
+            return cell
+        }
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Hello"
-    }
+   
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        50
+        40
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+          let view = UIView()
+        
+        let text = UILabel()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        text.font = UIFont.systemFont(ofSize: 25, weight: .thin)
+        text.textColor = UIColor.black.withAlphaComponent(0.8)
+        text.textAlignment = .center
+        view.addSubview(text)
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        text.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        text.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        text.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     
-    
-    
-    
-    //MARK: - UITableViewDelegate
+        switch section {
+        case 0:
+            text.text = "Members"
+        case 1:
+            text.text = "Albums"
+        case 2:
+            text.text = "Photos"
+        default:
+            break
+        }
+        return view
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
-    
+ 
 }
 

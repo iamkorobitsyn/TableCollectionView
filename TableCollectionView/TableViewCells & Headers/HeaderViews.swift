@@ -8,30 +8,27 @@
 import Foundation
 import UIKit
 
-class MainHeaderView: UIView {
+class MainHeader: UIView {
     
-    let image = UIImageView()
-    
+    let headerFrame = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200))
+    let headerImage = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(image)
-        image.translatesAutoresizingMaskIntoConstraints = false
+        headerImage.image = UIImage(named: "startImage")
+        headerImage.contentMode = .scaleAspectFill
+        headerImage.clipsToBounds = true
+       
+        headerFrame.insertSubview(headerImage, at: 1)
         
-        image.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        image.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        image.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-        image.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        image.contentMode = .center
-        
-        image.backgroundColor = UIColor.red
-        
-        image.image = UIImage(named: "startImage")
+        headerImage.translatesAutoresizingMaskIntoConstraints = false
+        headerImage.widthAnchor.constraint(equalTo: headerFrame.widthAnchor).isActive = true
+        headerImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
