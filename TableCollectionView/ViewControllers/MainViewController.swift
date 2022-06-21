@@ -17,6 +17,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         title = "Pink Floyd"
         
+        
+        
         createTableView()
         tableview.tableHeaderView = mainHeader.headerFrame
     }
@@ -72,16 +74,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40
+        35
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-          let view = UIView()
-        
+        let view = UIView()
         let text = UILabel()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        text.font = UIFont.systemFont(ofSize: 25, weight: .thin)
-        text.textColor = UIColor.black.withAlphaComponent(0.8)
+        view.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+        text.font = UIFont.systemFont(ofSize: 30, weight: .light)
+        text.textColor = UIColor.white.withAlphaComponent(0.8)
         text.textAlignment = .center
         view.addSubview(text)
         text.translatesAutoresizingMaskIntoConstraints = false
