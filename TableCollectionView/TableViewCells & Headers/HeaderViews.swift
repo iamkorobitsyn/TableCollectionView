@@ -16,7 +16,7 @@ class MainHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        headerImage.image = UIImage(named: "startImage")
+        headerImage.image = UIImage(named: "darkCoverImage")
         headerImage.contentMode = .scaleAspectFill
         headerImage.clipsToBounds = true
        

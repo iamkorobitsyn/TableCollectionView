@@ -80,7 +80,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         let text = UILabel()
-        view.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         text.font = UIFont.systemFont(ofSize: 30, weight: .light)
         text.textColor = UIColor.white.withAlphaComponent(0.8)
         text.textAlignment = .center
