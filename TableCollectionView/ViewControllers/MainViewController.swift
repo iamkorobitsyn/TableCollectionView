@@ -91,6 +91,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         text.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         text.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     
+        
         switch section {
         case 0:
             text.text = "Members"
