@@ -18,10 +18,35 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         title = "Pink Floyd"
         
         
-        
+        createItem()
         createTableView()
         tableview.tableHeaderView = mainHeader.headerFrame
     }
+    
+@objc func test() {
+    print("Hello")
+    let vc = SettingsViewcontroller()
+    vc.modalPresentationStyle = .popover
+    present(vc, animated: true)
+}
+    //MARK: - Create Item
+    
+    private func createItem() {
+    let customView = UIButton()
+    customView.translatesAutoresizingMaskIntoConstraints = false
+    customView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+    customView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    
+    let image = UIImage(named: "themeIcon")
+    let tintedImage = image?.withRenderingMode(.alwaysTemplate)
+    customView.setImage(tintedImage, for: .normal)
+    customView.tintColor = UIColor.systemGray2
+    customView.contentMode = .scaleAspectFit
+
+    customView.addTarget(self, action: #selector(test), for: .touchUpInside)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: customView)
+    }
+    
     
     //MARK: - Create TableView
  

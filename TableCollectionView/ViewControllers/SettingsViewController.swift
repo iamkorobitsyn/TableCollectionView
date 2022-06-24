@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import UIKit
+
+class SettingsViewcontroller: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.systemBlue
+    }
+    
+}

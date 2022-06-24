@@ -12,6 +12,11 @@ class NavigationController: UINavigationController {
     
     override func viewDidLoad() {
         navigationBar.prefersLargeTitles = true
-        navigationBar.backgroundColor = .none
+        navigationBar.backgroundColor = .systemBackground
+        
+        
+        
+        
     }
 }
+
