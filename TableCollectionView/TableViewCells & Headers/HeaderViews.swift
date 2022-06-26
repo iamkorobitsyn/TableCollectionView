@@ -10,13 +10,14 @@ import UIKit
 
 class MainHeader: UIView {
     
+    
     let headerFrame = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200))
     let headerImage = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        headerImage.image = UIImage(named: "darkCoverImage")
+        headerImage.image = UIImage(named: "headerImageSet")
         headerImage.contentMode = .scaleAspectFill
         headerImage.clipsToBounds = true
        

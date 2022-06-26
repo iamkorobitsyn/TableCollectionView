@@ -49,6 +49,7 @@ struct Album {
     let years = ["1967", "1968", "1969", "1969", "1970",
                  "1971", "1972", "1973", "1977", "1979",
                  "1983", "1987", "1994"]
+    
     let titles = ["The Piper At The Gates Of Dawn", "A Saucerful Of Secrets",
                   "More", "Ummagumma", "Atom Heart Mother",
                   "Meddle", "Obscured By Clouds", "The Dark Side Of The Moon",

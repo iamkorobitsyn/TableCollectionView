@@ -23,9 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
         
+        window?.overrideUserInterfaceStyle = MTUserDevaults.shared.theme.getUserInterfaceStyle()
         return true
+        
     }
-
 
 }
 
