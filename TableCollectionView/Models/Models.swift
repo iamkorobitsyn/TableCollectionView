@@ -7,45 +7,18 @@
 
 import Foundation
 
-struct PinkFloyd {
-    let member: Member
-    let album: Album
-    let Photos = ["01img","02img","03img","04img","05img",
-                  "06img","07img","08img","09img","10img",
-                  "11img","12img","13img","14img","15img"]
+struct Data {
+
+struct Members {
+    let fullName = ["David Gilmour", "Roger Waters",
+                    "Richard Wright", "Nick Mason"]
+    
+    let role = ["Vocal, guitar", "Bas", "Keys","Drums"]
+    let photo = ["David Gilmour", "Roger Waters",
+                 "Richard Wright", "Nick Mason"]
 }
 
-struct Member {
-    let fullName: FullName
-    let role: Role
-    let photo: Photo
-}
-
-enum FullName: String {
-    case gilmour = "David Gilmour"
-    case waters = "Roger Waters"
-    case barrett = "Syd Barrett"
-    case wright = "Richard Wright"
-    case Mason = "Nick Mason"
-}
-
-enum Role: String {
-    case gilmour = "Vocal, guitar"
-    case waters = "Bas"
-    case barrett = "Guitar"
-    case wright = "Keys"
-    case Mason = "Drums"
-}
-
-enum Photo: String {
-    case gilmour = "David Gilmour"
-    case waters = "Roger Waters"
-    case barrett = "Syd Barrett"
-    case wright = "Richard Wright"
-    case Mason = "Nick Mason"
-}
-
-struct Album {
+struct Albums {
     let years = ["1967", "1968", "1969", "1969", "1970",
                  "1971", "1972", "1973", "1977", "1979",
                  "1983", "1987", "1994"]
@@ -63,3 +36,9 @@ struct Album {
                   "1987 - A Momentary Lapse Of Reason", "1994 - The Division Bell"]
 }
 
+struct Photos {
+    let photos = ["01img","02img","03img","04img","05img",
+                  "06img","07img","08img","09img","10img",
+                  "11img","12img","13img","14img","15img"]
+}
+}

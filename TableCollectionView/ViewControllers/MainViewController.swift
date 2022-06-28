@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let backgroundView = UIImageView()
-    var mainHeader = MainHeader()
+    var mainHeader = TableViewHeader()
     var tableview = UITableView()
     
    
@@ -52,16 +52,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Create TableView
  
     func createTableView() {
-        
-        tableview = UITableView(frame: view.bounds, style: .plain)
-        tableview.register(MembersCell.self, forCellReuseIdentifier: "MembersCell")
+        tableview = UITableView(frame: self.view.bounds, style: .plain)
+        tableview.register(MembersTableCell.self, forCellReuseIdentifier: "MembersTableCell")
+        tableview.register(AlbumsTableCell.self, forCellReuseIdentifier: "AlbumsTableCell")
+        tableview.register(PhotosTableCell.self, forCellReuseIdentifier: "PhotosTableCell")
         self.tableview.delegate = self
         self.tableview.dataSource = self
         
         view.addSubview(tableview)
-        
         tableview.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tableview.sectionHeaderTopPadding = 0
+
+        tableview.sectionHeaderTopPadding = 0.01
         tableview.separatorStyle = .none
     }
 
@@ -73,17 +74,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 1
-        case 2:
-            return 1
-        default:
-            break
-        }
-        return 0
+        return 1
     }
     
  
@@ -92,22 +83,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         switch indexPath {
         case [0, 0]:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell", for: indexPath) as? MembersCell {
-                cell.backgroundColor = UIColor.red
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "MembersTableCell", for: indexPath) as? MembersTableCell {
+                let test = Data.Members()
+                cell.data = test.photo
                 return cell
             }
         case [1, 0]:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell", for: indexPath) as? MembersCell {
-                cell.backgroundColor = UIColor.blue
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumsTableCell", for: indexPath) as? AlbumsTableCell {
+                let test = Data.Albums()
+                cell.data = test.covers
                 return cell
             }
         case [2, 0]:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell", for: indexPath) as? MembersCell {
-                cell.backgroundColor = UIColor.green
-                return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableCell", for: indexPath) as? PhotosTableCell {
+                let test = Data.Photos()
+                cell.data = test.photos
             }
         default:
             break
@@ -118,7 +110,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        35
+        40
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -137,10 +129,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         icon.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         icon.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         icon.contentMode = .scaleAspectFit
-        
+
         text.translatesAutoresizingMaskIntoConstraints = false
         text.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        text.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        text.heightAnchor.constraint(equalToConstant: 40).isActive = true
         text.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60).isActive = true
         text.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         text.font = UIFont.systemFont(ofSize: 20, weight: .thin)
@@ -155,7 +147,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         accessory.image = UIImage.init(systemName: "chevron.right")
         accessory.tintColor = UIColor.label.withAlphaComponent(0.4)
         accessory.contentMode = .scaleAspectFit
-    
+
         switch section {
         case 0:
             icon.image = UIImage(named: "members")?.withTintColor(UIColor.label.withAlphaComponent(0.4))
@@ -173,7 +165,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        switch indexPath {
+        case [0, 0]:
+            return 100
+        case [1, 0]:
+            return 150
+        case [2, 0]:
+            return tableview.bounds.height
+        default:
+            break
+        }
+        return 0
     }
 }
 

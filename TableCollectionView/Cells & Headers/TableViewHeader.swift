@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-class MainHeader: UIView {
+class TableViewHeader: UIView {
     
     
-    let headerFrame = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200))
+    let headerFrame = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 170))
     let headerImage = UIImageView()
     
     override init(frame: CGRect) {
@@ -25,7 +25,7 @@ class MainHeader: UIView {
         
         headerImage.translatesAutoresizingMaskIntoConstraints = false
         headerImage.widthAnchor.constraint(equalTo: headerFrame.widthAnchor).isActive = true
-        headerImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        headerImage.heightAnchor.constraint(equalToConstant: 170).isActive = true
     }
     
     required init?(coder: NSCoder) {
